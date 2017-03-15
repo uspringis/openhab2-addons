@@ -7,15 +7,8 @@
  */
 package org.openhab.binding.bacnet.handler;
 
-import static org.openhab.binding.bacnet.bacnetBindingConstants.CHANNEL_1;
+import static org.openhab.binding.bacnet.BACnetBindingConstants.CHANNEL_OBJECT_NAME;
 
-import java.util.Set;
-
-import org.code_house.bacnet4j.wrapper.api.BacNetClient;
-import org.code_house.bacnet4j.wrapper.api.Device;
-import org.code_house.bacnet4j.wrapper.api.DeviceDiscoveryListener;
-import org.code_house.bacnet4j.wrapper.api.Property;
-import org.code_house.bacnet4j.wrapper.ip.BacNetIpClient;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
@@ -25,22 +18,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The {@link bacnetHandler} is responsible for handling commands, which are
+ * The {@link BACnetDeviceHandler} is responsible for handling commands, which are
  * sent to one of the channels.
  *
  * @author ugis.springis@gmail.com - Initial contribution
  */
-public class bacnetHandler extends BaseThingHandler {
+public class BACnetDeviceHandler extends BaseThingHandler {
 
-    private Logger logger = LoggerFactory.getLogger(bacnetHandler.class);
+    private Logger logger = LoggerFactory.getLogger(BACnetDeviceHandler.class);
 
-    public bacnetHandler(Thing thing) {
+    public BACnetDeviceHandler(Thing thing) {
         super(thing);
     }
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-        if (channelUID.getId().equals(CHANNEL_1)) {
+        if (channelUID.getId().equals(CHANNEL_OBJECT_NAME)) {
             // TODO: handle command
 
             // Note: if communication with thing fails for some reason,
@@ -62,30 +55,6 @@ public class bacnetHandler extends BaseThingHandler {
         // as expected. E.g.
         // updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_ERROR,
         // "Can not access device as username and/or password are invalid");
-        logger.debug("Creating client");
-
-        BacNetClient client = new BacNetIpClient("0.0.0.0", "255.255.255.255", 1111);
-        client.start();
-        logger.debug("Client started");
-
-        Set<Device> devices = client.discoverDevices(new DeviceDiscoveryListener() {
-
-            @Override
-            public void deviceDiscovered(Device device) {
-                logger.debug("Device found: " + device.toString());
-            }
-        }, 5000); // given number is timeout in millis
-        logger.debug("Discovery completed");
-
-        for (Device device : devices) {
-            logger.debug("Device found: " + device.toString());
-            for (Property p : client.getDeviceProperties(device)) {
-                logger.debug("      Property: " + p.getName());
-            }
-        }
-
-        client.stop();
-        logger.debug("Client stoped");
 
     }
 

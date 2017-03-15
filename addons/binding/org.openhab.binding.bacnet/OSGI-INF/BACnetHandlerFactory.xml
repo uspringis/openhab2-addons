@@ -10,7 +10,7 @@
 -->
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="binding.bacnet">
 
-   <implementation class="org.openhab.binding.bacnet.internal.bacnetHandlerFactory"/>
+   <implementation class="org.openhab.binding.bacnet.internal.BACnetHandlerFactory"/>
 
    <service>
       <provide interface="org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory"/>

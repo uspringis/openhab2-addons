@@ -4,21 +4,28 @@
         xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
         xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
 
-    <!-- Sample Thing Type -->
-    <thing-type id="sample">
-        <label>bacnet Binding Thing</label>
-        <description>Sample thing for bacnet Binding</description>
+    <bridge-type id="bacnetip">
+        <label>BACnet/IP</label>
+        <description>BACnet/IP interface</description>
+    </bridge-type>
+
+    <thing-type id="device">
+        <supported-bridge-type-refs>
+            <bridge-type-ref id="bacnetip" />
+        </supported-bridge-type-refs>
+        
+        <label>BACnet device</label>
+        <description>Device on BACnet/IP network</description>
 
         <channels>
-            <channel id="channel1" typeId="sample-channel"/>
+            <channel id="objectname" typeId="object-name"/>
         </channels>
     </thing-type>
 
-    <!-- Sample Channel Type -->
-    <channel-type id="sample-channel">
-        <item-type>bacnetItem</item-type>
-        <label>bacnet Binding Channel</label>
-        <description>Sample channel for bacnet Binding</description>
+    <channel-type id="object-name">
+        <item-type>String</item-type>
+        <label>Object Name</label>
+        <description>Object name returned by the device</description>
     </channel-type>
 
 </thing:thing-descriptions>

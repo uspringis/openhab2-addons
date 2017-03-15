@@ -1,24 +1,26 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: bacnet Binding
+Bundle-Name: BACnet Binding
 Bundle-SymbolicName: org.openhab.binding.bacnet;singleton:=true
 Bundle-Vendor: openHAB
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
- lib/api-1.0.1.jar,
- lib/ip-1.0.1.jar,
- lib/bacnet4j-3.2.4.jar
+ lib/BACnet4J-4.0.0.jar,
+ lib/sero-scheduler-1.0.0.jar,
+ lib/sero-warp-1.0.0.jar
 Import-Package: 
- org.openhab.binding.bacnet,
- org.openhab.binding.bacnet.handler,
+ com.google.common.collect,
  org.eclipse.smarthome.config.core,
+ org.eclipse.smarthome.config.core.validation,
+ org.eclipse.smarthome.config.discovery,
  org.eclipse.smarthome.core.library.types,
  org.eclipse.smarthome.core.thing,
  org.eclipse.smarthome.core.thing.binding,
  org.eclipse.smarthome.core.thing.binding.builder,
  org.eclipse.smarthome.core.thing.type,
  org.eclipse.smarthome.core.types,
+ org.osgi.framework,
  org.slf4j
 Service-Component: OSGI-INF/*.xml
 Export-Package: org.openhab.binding.bacnet,

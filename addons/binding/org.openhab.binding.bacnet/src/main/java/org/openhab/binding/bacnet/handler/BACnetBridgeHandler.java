@@ -142,43 +142,44 @@ public class BACnetBridgeHandler extends BaseBridgeHandler {
 
                 List<Channel> objectChannels = new ArrayList<Channel>();
 
+                String objectIdentifierText = Integer.toString(objectIdentifier.getInstanceNumber());
                 String objectName = RequestUtils
                         .getProperty(localDevice, remoteDevice, objectIdentifier, PropertyIdentifier.objectName)
-                        .toString();
+                        .toString() + " (" + objectIdentifierText + ")";
                 String description = RequestUtils
                         .getProperty(localDevice, remoteDevice, objectIdentifier, PropertyIdentifier.description)
                         .toString();
 
                 if (objectIdentifier.getObjectType().equals(ObjectType.analogInput)) {
-                    objectChannels.add(ChannelBuilder
-                            .create(new ChannelUID(deviceThing.getUID(),
-                                    Integer.toString(objectIdentifier.getInstanceNumber())), "Number")
-                            .withDescription(description).withLabel(objectName).build());
+                    objectChannels.add(
+                            ChannelBuilder.create(new ChannelUID(deviceThing.getUID(), objectIdentifierText), "Number")
+                                    .withDescription("" + description + " (analog-input," + objectIdentifierText + ")")
+                                    .withLabel(objectName).build());
                 }
 
                 if (objectIdentifier.getObjectType().equals(ObjectType.analogOutput)) {
-                    objectChannels.add(ChannelBuilder
-                            .create(new ChannelUID(deviceThing.getUID(),
-                                    Integer.toString(objectIdentifier.getInstanceNumber())), "Number")
-                            .withDescription(description).withLabel(objectName).build());
+                    objectChannels.add(
+                            ChannelBuilder.create(new ChannelUID(deviceThing.getUID(), objectIdentifierText), "Number")
+                                    .withDescription("" + description + " (analog-output," + objectIdentifierText + ")")
+                                    .withLabel(objectName).build());
                 }
 
                 if (objectIdentifier.getObjectType().equals(ObjectType.analogValue)) {
-                    objectChannels.add(ChannelBuilder
-                            .create(new ChannelUID(deviceThing.getUID(),
-                                    Integer.toString(objectIdentifier.getInstanceNumber())), "Number")
-                            .withDescription(description).withLabel(objectName).build());
+                    objectChannels.add(
+                            ChannelBuilder.create(new ChannelUID(deviceThing.getUID(), objectIdentifierText), "Number")
+                                    .withDescription("" + description + " (analog-value," + objectIdentifierText + ")")
+                                    .withLabel(objectName).build());
                 }
 
                 if (objectIdentifier.getObjectType().equals(ObjectType.multiStateInput)) {
                     objectChannels.add(ChannelBuilder
-                            .create(new ChannelUID(deviceThing.getUID(),
-                                    Integer.toString(objectIdentifier.getInstanceNumber())), "Number")
-                            .withDescription(description).withLabel(objectName).build());
+                            .create(new ChannelUID(deviceThing.getUID(), objectIdentifierText), "Number")
+                            .withDescription("" + description + " (multi-state-input," + objectIdentifierText + ")")
+                            .withLabel(objectName + " value").build());
                     objectChannels.add(ChannelBuilder
-                            .create(new ChannelUID(deviceThing.getUID(),
-                                    Integer.toString(objectIdentifier.getInstanceNumber()) + "_text"), "String")
-                            .withDescription(description).withLabel(objectName).build());
+                            .create(new ChannelUID(deviceThing.getUID(), objectIdentifierText + "_text"), "String")
+                            .withDescription("" + description + " (multi-state-input," + objectIdentifierText + ")")
+                            .withLabel(objectName).build());
                 }
 
                 channelList.addAll(objectChannels);

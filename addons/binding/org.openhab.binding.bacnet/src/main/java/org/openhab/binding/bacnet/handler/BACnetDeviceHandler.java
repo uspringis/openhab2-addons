@@ -68,4 +68,10 @@ public class BACnetDeviceHandler extends BaseThingHandler {
 
     }
 
+    @Override
+    public void thingUpdated(Thing thing) {
+        logger.debug("thingUpdated received");
+        super.thingUpdated(thing);
+    }
+
 }

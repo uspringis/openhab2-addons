@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<thing:thing-descriptions bindingId="bacnet"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-        xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+<thing:thing-descriptions bindingId="bacnet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
 
-    <bridge-type id="bacnetip">
-        <label>BACnet/IP</label>
-        <description>BACnet/IP interface</description>
-    </bridge-type>
+	<bridge-type id="bacnetip">
+		<label>BACnet/IP</label>
+		<description>BACnet/IP interface</description>
+	</bridge-type>
 
-    <thing-type id="device">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="bacnetip" />
-        </supported-bridge-type-refs>
-        
-        <label>BACnet device</label>
-        <description>Device on BACnet/IP network</description>
+	<thing-type id="device">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bacnetip" />
+		</supported-bridge-type-refs>
 
-        <channels>
-            <channel id="objectname" typeId="object-name"/>
-        </channels>
-    </thing-type>
+		<label>BACnet device</label>
+		<description>Device on BACnet/IP network</description>
 
-    <channel-type id="object-name">
-        <item-type>String</item-type>
-        <label>Object Name</label>
-        <description>Object name returned by the device</description>
-    </channel-type>
+	</thing-type>
+
+	<channel-type id="analog-input">
+		<item-type>Number</item-type>
+		<label>Analog Input</label>
+	</channel-type>
+	<channel-type id="analog-outpu">
+		<item-type>Number</item-type>
+		<label>Analog Output</label>
+	</channel-type>
+	<channel-type id="analog-value">
+		<item-type>Number</item-type>
+		<label>Analog value</label>
+	</channel-type>
+	<channel-type id="multi-state-input">
+		<item-type>Number</item-type>
+		<label>Multi-State Input</label>
+	</channel-type>
+	<channel-type id="multi-state-input-text">
+		<item-type>Text</item-type>
+		<label>Multi-State Input State Text</label>
+	</channel-type>
 
 </thing:thing-descriptions>

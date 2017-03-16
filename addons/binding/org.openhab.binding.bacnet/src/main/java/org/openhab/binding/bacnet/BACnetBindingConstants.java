@@ -27,10 +27,18 @@ public class BACnetBindingConstants {
     public final static ThingTypeUID BACNETIP_THING_TYPE = new ThingTypeUID(BINDING_ID, "bacnetip");
     public final static ThingTypeUID DEVICE_THING_TYPE = new ThingTypeUID(BINDING_ID, "device");
 
-    // List of all Channel ids
-    public final static String CHANNEL_OBJECT_NAME = "object-name";
+    // List of all Channel Type ids
+    public final static String CHANNEL_TYPE_ANALOG_INPUT = "analog-input";
+    public final static String CHANNEL_TYPE_ANALOG_VALUE = "analog-value";
+    public final static String CHANNEL_TYPE_ANALOG_OUTPUT = "analog-output";
+    public final static String CHANNEL_TYPE_MULTI_STATE_INPUT = "multi-state-input";
+    public final static String CHANNEL_TYPE_MULTI_STATE_INPUT_TEXT = "multi-state-input-text";
 
     public final static Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = ImmutableSet.of(BACNETIP_THING_TYPE,
             DEVICE_THING_TYPE);
+
+    // device properties
+    public final static String DEVICE_PROPERY_ADDRESS = "address";
+    public final static String DEVICE_PROPERY_INSTANCE_NUMBER = "instanceNumber";
 
 }

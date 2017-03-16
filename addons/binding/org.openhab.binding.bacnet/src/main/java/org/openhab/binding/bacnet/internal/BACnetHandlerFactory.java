@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.openhab.binding.bacnet.discovery.BACnetDiscoveryService;
 import org.openhab.binding.bacnet.handler.BACnetBridgeHandler;
+import org.openhab.binding.bacnet.handler.BACnetDeviceHandler;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,11 @@ public class BACnetHandlerFactory extends BaseThingHandlerFactory {
             logger.debug("BACNETIP_THING_TYPE handler created");
             registerDeviceDiscoveryService(bridgeHandler, 5); // FIXME: use timeout from configuration
             return bridgeHandler;
+        }
+        if (thingTypeUID.equals(DEVICE_THING_TYPE)) {
+            BACnetDeviceHandler deviceHandler = new BACnetDeviceHandler(thing);
+            logger.debug("DEVICE_THING_TYPE handler created");
+            return deviceHandler;
         }
 
         return null;

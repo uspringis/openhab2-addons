@@ -46,8 +46,8 @@ public class BACnetDiscoveryService extends AbstractDiscoveryService {
         ThingUID thingUID = findDeviceThingUID(device);
 
         Map<String, Object> properties = new HashMap<>(2);
-        properties.put("address", device.getAddress().toString());
-        properties.put("instanceNumber", device.getInstanceNumber());
+        properties.put(DEVICE_PROPERY_ADDRESS, device.getAddress().toString());
+        properties.put(DEVICE_PROPERY_INSTANCE_NUMBER, device.getInstanceNumber());
 
         String displayLabel = device.getName() + " (" + device.getModelName() + ")";
 

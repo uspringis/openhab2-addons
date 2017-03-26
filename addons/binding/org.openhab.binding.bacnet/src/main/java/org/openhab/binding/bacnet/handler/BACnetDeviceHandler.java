@@ -10,6 +10,7 @@ package org.openhab.binding.bacnet.handler;
 import static org.openhab.binding.bacnet.BACnetBindingConstants.DEVICE_PROPERY_INSTANCE_NUMBER;
 
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -72,6 +73,12 @@ public class BACnetDeviceHandler extends BaseThingHandler {
     public void thingUpdated(Thing thing) {
         logger.debug("thingUpdated received");
         super.thingUpdated(thing);
+    }
+
+    @Override
+    public void handleConfigurationUpdate(Map<String, Object> configurationParameters) {
+        logger.debug("handleConfigurationUpdate received");
+        super.handleConfigurationUpdate(configurationParameters);
     }
 
 }
